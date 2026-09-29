@@ -1,0 +1,52 @@
+{
+  "name": "lici-kitchen",
+  "version": "12.2.0",
+  "description": "Phần mềm tính giá tủ bếp inox LICI",
+  "author": "TỦ BẾP INOX LICI",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64",
+    "dist-portable": "electron-builder --win portable --x64"
+  },
+  "build": {
+    "appId": "com.lici.kitchen",
+    "productName": "LICI Kitchen",
+    "copyright": "© 2026 TỦ BẾP INOX LICI",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**/*"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "TỦ BẾP INOX LICI",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "deleteAppDataOnUninstall": false
+    },
+    "portable": {
+      "artifactName": "LICI-Kitchen-Portable-${version}.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}
